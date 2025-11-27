@@ -1,26 +1,26 @@
 let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
 let listaProdutos = [];
 let total = 0;
-let vendas = JSON.parse(localStorage.getItem('vendasDoDia')) || []; // Chave para armazenar vendas no localStorage
+let vendas = JSON.parse(localStorage.getItem('vendasDoDia')) || []; 
 function atualizarAutoCompletar() {
     let dataList = document.querySelector('#lista-codigos');
-    dataList.innerHTML = ''; // Limpa antes de atualizar
+    dataList.innerHTML = '';
 
     produtos.forEach(produto => {
         let option = document.createElement('option');
-        option.value = produto.codigo; // Adiciona apenas o código
-        option.textContent = `${produto.codigo} - ${produto.nome}`; // Opcional (aparece apenas no código)
+        option.value = produto.codigo; 
+        option.textContent = `${produto.codigo} - ${produto.nome}`; 
         dataList.appendChild(option);
     });
 }
 document.querySelector("#codigo").addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-        event.preventDefault(); // Evita que o formulário seja submetido
-        adicionarProdutoLista(); // Aciona a função para adicionar o produto
+        event.preventDefault(); 
+        adicionarProdutoLista(); 
     }
 });
 
-// Chamar essa função ao carregar os produtos
+
 atualizarAutoCompletar();
 
 function adicionarProdutoLista() {
@@ -79,23 +79,23 @@ function calcularPrecoTotal() {
 }
 
 function calcularTroco() {
-    // Obtenha o valor recebido
+    
     let dinheiroRecebido = parseFloat(document.querySelector('#dinheiro').value);
 
-    // Certifique-se de que o total está calculado
+    
     calcularPrecoTotal();
 
     if (isNaN(dinheiroRecebido) || dinheiroRecebido < total) {
-        // Validação: exiba um alerta se o valor recebido for inválido ou insuficiente
+        
         alert('Dinheiro insuficiente ou valor inválido!');
         document.querySelector('#troco').innerText = '0.00';
         return;
     }
 
-    // Calcule o troco
+    
     let troco = dinheiroRecebido - total;
 
-    // Exiba o troco no campo correspondente
+    
     document.querySelector('#troco').innerText = troco.toFixed(2);
 }
 
@@ -133,11 +133,11 @@ function concluirVenda() {
     alert('Venda concluída e registrada com sucesso!');
 }
 if (!sessionStorage.getItem('usuarioLogado')) {
-    window.location.href = "../login.html"; // Volta para o login se não estiver autenticado
+    window.location.href = "../login.html"; 
 }
 
-// Função para sair e voltar ao login
+
 function logout() {
-    sessionStorage.removeItem('usuarioLogado'); // Remove o usuário da sessão
-    window.location.href = "../login.html"; // Redireciona para o login
+    sessionStorage.removeItem('usuarioLogado'); 
+    window.location.href = "../login.html"; 
 }
