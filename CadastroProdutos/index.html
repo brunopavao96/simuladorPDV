@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador PDV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button onclick="window.location.href='../PaginaInicial/index.html'">Voltar para Página Inicial</button>
+    <div class="container">
+        <h2>Cadastrar Produtos</h2>
+        <input type="text" id="codigo" placeholder="Código do Produto">
+        <input type="text" id="nome" placeholder="Nome do Produto">
+        <input type="number" id="preco" placeholder="Preço (R$)">
+        <button onclick="adicionarProduto()">Adicionar Produto</button>
+
+        <h2>Lista de Produtos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nome</th>
+                    <th>Preço (R$)</th>
+                </tr>
+            </thead>
+            <tbody id="lista-produtos"></tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
